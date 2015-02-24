@@ -5,64 +5,31 @@
  */
 
 package Clases;
+import java.util.*;
 
 /**
  *
  * @author androide17
  */
-public class PlantGamer extends Gamer{ 
+public class Plant{ 
 
     private String picturePlant;
     private String namePlant;
     private int pointsOfAtack;
     private int pointsOfDefense;
     private char Mode;
+    
     private int positionInTheQueue;
     private int posX;
     private int poxY;
 
     
-    
-    
-    /**
-     * Getters and Setters  
-     */
-    public char getMode() {
-        return Mode;
-    }
-
-    public void setMode(char Mode) {
+    public Plant(String picturePlant, String namePlant, int pointsOfAtack, int pointsOfDefense, char Mode) {
+        this.picturePlant = picturePlant;
+        this.namePlant = namePlant;
+        this.pointsOfAtack = pointsOfAtack;
+        this.pointsOfDefense = pointsOfDefense;
         this.Mode = Mode;
-    }
-
-    public int getPositionInTheQueue() {
-        return positionInTheQueue;
-    }
-
-    public void setPositionInTheQueue(int positionInTheQueue) {
-        this.positionInTheQueue = positionInTheQueue;
-    }
-
-    public int getPosX() {
-        return posX;
-    }
-
-    public void setPosX(int posX) {
-        this.posX = posX;
-    }
-
-    public int getPoxY() {
-        return poxY;
-    }
-
-    public void setPoxY(int poxY) {
-        this.poxY = poxY;
-    }
-
-    
-    
-    public PlantGamer(String name, int quantity) {
-        super(name, quantity);
     }
      
     
@@ -98,4 +65,39 @@ public class PlantGamer extends Gamer{
         this.pointsOfDefense = pointsOfDefense;
     }
     
+    
+        /**
+     * Getters and Setters  
+     */
+    public char getMode() {
+        return Mode;
+    }
+
+    public void setMode(char Mode) {
+        this.Mode = Mode;
+    }
+
+    public int getPositionInTheQueue() {
+        return positionInTheQueue;
+    }
+
+    public void setPositionInTheQueue(int positionInTheQueue) {
+        this.positionInTheQueue = positionInTheQueue;
+    }
+
+    public int getPosX() {
+        return posX;
+    }
+
+    public void setPosX(int posX) {
+        this.posX = posX;
+    }
+
+    public int getPoxY() {
+        return poxY;
+    }
+
+    public void setPoxY(int poxY) {
+        this.poxY = poxY;
+    }
 }

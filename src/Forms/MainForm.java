@@ -6,18 +6,36 @@
 
 package Forms;
 
+import java.awt.Image;
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author androide17
  */
 public class MainForm extends javax.swing.JFrame {
-Forms.RegistroJugadorPlantas ventanaP;
-Forms.RegistroJugadorZombie  ventanaZ;
-    /**
+    
+    public static  Listas.Lista listaJugadoresMAIN=new Listas.Lista();
+    public static  Listas.Lista listaCatalogoPlntasMAIN=new Listas.Lista();
+    public static  Listas.Lista listaCatalogoZombiesMAIN=new Listas.Lista();
+    
+    
+    Forms.RegistroJugadorPlantas ventanaP;
+    Forms.RegistroJugadorZombie  ventanaZ;
+     /**
      * Creates new form MainForm
      */
     public MainForm() {
         initComponents();
+        
+        
+        ImageIcon tmpIconAux = new ImageIcon(getClass().getResource("/Others/Index.jpg"));
+        ImageIcon tmpIcon = new ImageIcon(tmpIconAux.getImage().getScaledInstance(lblFondo.getWidth(), lblFondo.getHeight(), Image.SCALE_DEFAULT));
+        lblFondo.setIcon(tmpIcon);     
+        
+        
+        
+        
     }
 
     /**
@@ -29,13 +47,21 @@ Forms.RegistroJugadorZombie  ventanaZ;
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        lblFondo = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         btnPlantas = new javax.swing.JButton();
         btnZombies = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
         btnNext = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Game");
         setName("Record Players"); // NOI18N
+
+        lblFondo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblFondo.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        jLabel1.setFont(new java.awt.Font("Dialog", 3, 18)); // NOI18N
+        jLabel1.setText("Registro de Jugadores");
 
         btnPlantas.setText("Jugador Plantas");
         btnPlantas.addActionListener(new java.awt.event.ActionListener() {
@@ -51,37 +77,49 @@ Forms.RegistroJugadorZombie  ventanaZ;
             }
         });
 
-        jLabel1.setText("Registro de Jugadores");
-
         btnNext.setText("Siguiente");
+        btnNext.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNextActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(108, 108, 108)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnNext)
-                    .addComponent(btnZombies, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnPlantas, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblFondo, javax.swing.GroupLayout.PREFERRED_SIZE, 464, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(20, 20, 20)))
-                .addContainerGap(99, Short.MAX_VALUE))
+                        .addGap(30, 30, 30)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(46, 46, 46)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnZombies, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnPlantas, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnNext))))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addComponent(jLabel1)
-                .addGap(29, 29, 29)
-                .addComponent(btnPlantas, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnZombies, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnNext)
-                .addContainerGap(81, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(lblFondo, javax.swing.GroupLayout.PREFERRED_SIZE, 525, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(61, 61, 61)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(57, 57, 57)
+                        .addComponent(btnPlantas, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnZombies, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(73, 73, 73)
+                        .addComponent(btnNext)))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         pack();
@@ -94,7 +132,7 @@ Forms.RegistroJugadorZombie  ventanaZ;
         ventanaP.show();
         
         
-        
+        this.btnPlantas.setEnabled(false);
         
     }//GEN-LAST:event_btnPlantasActionPerformed
 
@@ -102,8 +140,22 @@ Forms.RegistroJugadorZombie  ventanaZ;
         
         ventanaZ=new Forms.RegistroJugadorZombie();
         ventanaZ.show();
+        
+        this.btnZombies.setEnabled(false);
+        
 // TODO add your handling code here:
     }//GEN-LAST:event_btnZombiesActionPerformed
+
+    private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
+/**
+ * COMO PRUEBA CREAMOS LA LISTA DE DOS JUGADORES AL FINAL LO IMPRIMOS RECORRIENDO LA LISTA.
+ */
+        listaJugadoresMAIN.recorrerListaJugadores();
+        Forms.CreacionCatalogoPlantas ventana=new Forms.CreacionCatalogoPlantas();
+        ventana.show();
+        dispose();
+// TODO add your handling code here:
+    }//GEN-LAST:event_btnNextActionPerformed
 
     /**
      * @param args the command line arguments
@@ -145,5 +197,6 @@ Forms.RegistroJugadorZombie  ventanaZ;
     private javax.swing.JButton btnPlantas;
     private javax.swing.JButton btnZombies;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel lblFondo;
     // End of variables declaration//GEN-END:variables
 }

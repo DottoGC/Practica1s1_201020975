@@ -1,4 +1,4 @@
-
+package Listas;
 /**
  *
  * @author Ottoniel Guarchaj
@@ -14,6 +14,8 @@ public class Nodo {
  */
     public Nodo(Object objetoAGuardar){
         this.objetoGuardado=objetoAGuardar;
+        this.anteriorNodo=null;
+        this.siguenteNodo=null;
     }
 
 
@@ -23,6 +25,7 @@ public class Nodo {
   */
     public void enlazarSiguiente(Nodo siguientenodo){
     this.siguenteNodo=siguientenodo;
+    
     }
     /**
      * ROmpe el nodo siguiente, oh establece null al enlace siguiente al nodo
@@ -52,7 +55,8 @@ public class Nodo {
  * Getters and Setters 
  */
     public Object getObjetoGuardado() {
-        return objetoGuardado;
+       
+        return this.objetoGuardado;
     }
 
     public void setObjetoGuardado(Object objetoGuardado) {

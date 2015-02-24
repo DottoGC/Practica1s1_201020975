@@ -6,6 +6,8 @@
 
 package Forms;
 
+import java.awt.Image;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
@@ -15,15 +17,18 @@ import javax.swing.JOptionPane;
 public class RegistroJugadorPlantas extends javax.swing.JFrame {
     
     
-    Clases.PlantGamer jugadorPlantas;
+    Clases.Gamer auxJugador;
 
     /**
      * Creates new form FormPrincipal
      */
     public RegistroJugadorPlantas() {
         initComponents();
-        jPanel1.setVisible(false);
-        btnModificar.setVisible(false);
+        
+        
+        ImageIcon tmpIconAux = new ImageIcon(getClass().getResource("/Others/Index2.jpg"));
+        ImageIcon tmpIcon = new ImageIcon(tmpIconAux.getImage().getScaledInstance(lblFondo.getWidth(), lblFondo.getHeight(), Image.SCALE_DEFAULT));
+        lblFondo.setIcon(tmpIcon);  
     }
 
     /**
@@ -41,12 +46,7 @@ public class RegistroJugadorPlantas extends javax.swing.JFrame {
         txtQuantity = new javax.swing.JTextField();
         btnCrear = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        txtAge = new javax.swing.JTextField();
-        txtGender = new javax.swing.JTextField();
-        btnModificar = new javax.swing.JButton();
+        lblFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -61,82 +61,45 @@ public class RegistroJugadorPlantas extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Dialog", 3, 18)); // NOI18N
         jLabel3.setText("Datos para el Jugador Plantas");
 
-        jLabel7.setText("Edad:");
-
-        jLabel8.setText("Genero:");
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel8)
-                    .addComponent(jLabel7))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtAge, javax.swing.GroupLayout.DEFAULT_SIZE, 89, Short.MAX_VALUE)
-                    .addComponent(txtGender))
-                .addContainerGap(94, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(txtAge, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(txtGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(40, Short.MAX_VALUE))
-        );
-
-        btnModificar.setText("Modificar");
-        btnModificar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnModificarActionPerformed(evt);
-            }
-        });
+        lblFondo.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(111, 111, 111)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtNickName, javax.swing.GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE)
-                    .addComponent(txtQuantity))
-                .addContainerGap(143, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnCrear, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnModificar))
-                .addGap(22, 22, 22))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(95, 95, 95)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addComponent(lblFondo, javax.swing.GroupLayout.PREFERRED_SIZE, 513, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(169, 169, 169)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnCrear)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel2))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtNickName)
+                                    .addComponent(txtQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(131, 131, 131)
+                        .addComponent(jLabel3)))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(33, 33, 33)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblFondo, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel3)
-                .addGap(38, 38, 38)
+                .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(txtNickName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -144,55 +107,46 @@ public class RegistroJugadorPlantas extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(txtQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(38, 38, 38)
                 .addComponent(btnCrear)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnModificar)
-                .addGap(28, 28, 28))
+                .addContainerGap(64, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearActionPerformed
-        /**
-         * Determinar si se esta creando el jugador plantas con los datos minimos, o se esta actualizando con mas campos ingresados.
-         */
 
+            /**
+             * Al momento de hacer click en crear jugador, preguntamos si se desea agregar mas
+             * campos al jugador, como edad, genero, fercha de nacimiento, etc...
+             */
+            int seleccion=JOptionPane.showConfirmDialog(null, "Desea agregarle mas datos del jugador? ", "Completar Registro", JOptionPane.YES_NO_OPTION);
+            
+            if (seleccion==0) {//Si se selecciono que SI
+                    Forms.InformacionExtraJPlantas ventana=new Forms.InformacionExtraJPlantas();
+                    ventana.nombreJugador=this.txtNickName.getText();
+                    ventana.cantidadPlantas=Integer.valueOf(this.txtQuantity.getText());
+                    ventana.show();
+                    dispose();
+                    
+                    
+            }else{
+                
+                auxJugador=new Clases.Gamer('P',txtNickName.getText(),Integer.valueOf(txtQuantity.getText()), null); 
+                //System.out.println("Jugador creado");
+                //System.out.println("Tipo: "+auxJugador.getTipo()+" NickNombre: "+auxJugador.getName()+" Cantidad de Plantas: "+auxJugador.getQuantity());
+                
+                Listas.Nodo nodoJugador= new Listas.Nodo(auxJugador);
+                //System.out.println("Convertido en nodo listo para ir la lista");                
+                Forms.MainForm.listaJugadoresMAIN.add(nodoJugador);                
+                //System.out.println("Agregado a la lista de Tamano: "+Forms.MainForm.listaJugadoresMAIN.getLengthList());
 
-         /* Creamos nuestro Jugador Plantas con los datos necesarios para un registro(NickName, Quantity)*/
-         
-        jugadorPlantas=new Clases.PlantGamer(txtNickName.getText(),Integer.valueOf(txtQuantity.getText()));
-        System.out.println("Jugador Creado Satisfactoriamente: \n"+"Nombre: "+jugadorPlantas.getName()+" Cantidad de Plantas: "+jugadorPlantas.getQuantity());
-                       
-        /**
-         * Si se dessa agregar mas campos al jugador, mostramos el panel que contiene los demas componenetes para ingresar mas campos
-         * y cambiamos el boton crear en "Actualizar Datos"
-         */
-        int seleccion=JOptionPane.showConfirmDialog(null, "Jugador Creado Exitosamente! Desea agregar mas informacion del jugador? ", "choose one", JOptionPane.YES_NO_OPTION);
-        if (seleccion==0) {
-            this.jPanel1.setVisible(true);
-            this.btnCrear.setVisible(false);
-            this.btnModificar.setVisible(true);
-        }
-        
-        
+                
+                dispose();           
+            }
+                
     }//GEN-LAST:event_btnCrearActionPerformed
-
-    private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
-        // TODO add your handling code here:
-        
-        
-        jugadorPlantas.setAge(Integer.valueOf(txtAge.getText()));
-        jugadorPlantas.setGender(txtAge.getText());
-        JOptionPane.showMessageDialog(null, "Jugador Registrado Completamente! ");
-        dispose();
-        
-        
-        
-    }//GEN-LAST:event_btnModificarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -231,15 +185,10 @@ public class RegistroJugadorPlantas extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCrear;
-    private javax.swing.JButton btnModificar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField txtAge;
-    private javax.swing.JTextField txtGender;
+    private javax.swing.JLabel lblFondo;
     private javax.swing.JTextField txtNickName;
     private javax.swing.JTextField txtQuantity;
     // End of variables declaration//GEN-END:variables

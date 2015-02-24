@@ -5,19 +5,28 @@
  */
 
 package Clases;
-
+import java.util.*;
 /**
  *
  * @author androide17
  */
 
-public class ZombieGamer extends Gamer{
+public class Zombie{
+
+    public Zombie(String pictureZombie, String nameZombie, int pointsOfAtack, int pointsOfDefense, char Mode) {
+        this.pictureZombie = pictureZombie;
+        this.nameZombie = nameZombie;
+        this.pointsOfAtack = pointsOfAtack;
+        this.pointsOfDefense = pointsOfDefense;
+        this.Mode = Mode;
+    }
     
     private String pictureZombie;
     private String nameZombie;
     private int pointsOfAtack;
     private int pointsOfDefense;
     private char Mode;
+    
     private int positionInTheStack;
     private int posX;
     private int posY;
@@ -28,12 +37,7 @@ public class ZombieGamer extends Gamer{
      * @param name Nombre del Jugador
      * @param quantity Cantidad de zombies
      */   
-    public ZombieGamer(String name, int quantity) {
-        super(name, quantity);
-    }
-    
-    
-    
+   
     
     /**
      * 

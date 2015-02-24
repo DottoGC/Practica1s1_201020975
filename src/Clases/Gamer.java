@@ -5,28 +5,37 @@
  */
 
 package Clases;
+import java.util.*;
 
 /**
  *
  * @author androide17
  */
 public class Gamer {
-        
+    
+    private char Tipo;
     private String name; //Nombre del jugador
     private int quantity;//Cantidad de personajes del jugador(No. de zombies|No. de plantas)
-    private int age;//Edad del jugador
-    private String gender;//Tipo de sexo del jugador(M|F)
+    private ArrayList moreAtributes;
     
     
     //**Constructor Inicial de un jugador*/
-    public Gamer(String name, int quantity) {
+    public Gamer(char tipo, String name, int quantity, ArrayList moreAtributes) {
+        this.Tipo=tipo;
         this.name = name;
         this.quantity = quantity;
-    }  
-    
-    
+        this.moreAtributes=moreAtributes;
+    }    
 
+    
+    public char getTipo() {
+        return Tipo;
+    }
 
+    public void setTipo(char Tipo) {
+        this.Tipo = Tipo;
+    }
+    
     public String getName() {
         return name;
     }
@@ -42,23 +51,22 @@ public class Gamer {
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
-
-    public String getGender() {
-        return gender;
-    }
-
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
-
     
+    
+    public int getSizeArrayList(){
+        int x;
+        x=this.moreAtributes.size();
+        return x;
+    }
+    
+    public String getAtributo(int indice){
+        String atributo=moreAtributes.get(indice).toString();
+    
+        return atributo;
+    }
+    
+    public ArrayList getArrayList(){
+        return moreAtributes;
+    }
     
 }

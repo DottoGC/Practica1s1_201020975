@@ -6,7 +6,8 @@
 
 package Forms;
 
-import java.util.HashSet;
+import java.awt.Image;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
@@ -15,16 +16,16 @@ import javax.swing.JOptionPane;
  */
 public class RegistroJugadorZombie extends javax.swing.JFrame {
 
-    Clases.ZombieGamer jugadorZombie;
+    Clases.Gamer jugadorZombie;
     
     /**
      * Creates new form RegistroJugadorZombie
      */
     public RegistroJugadorZombie() {
         initComponents();
-        jPanel1.setVisible(false);
-        btnActualizar.setVisible(false);
-        
+               ImageIcon tmpIconAux = new ImageIcon(getClass().getResource("/Others/Index2.jpg"));
+        ImageIcon tmpIcon = new ImageIcon(tmpIconAux.getImage().getScaledInstance(lblFondo.getWidth(), lblFondo.getHeight(), Image.SCALE_DEFAULT));
+        lblFondo.setIcon(tmpIcon);  
        
     }
     
@@ -43,13 +44,8 @@ public class RegistroJugadorZombie extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         txtNickName = new javax.swing.JTextField();
         txtQuantity = new javax.swing.JTextField();
-        jPanel1 = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        txtAge = new javax.swing.JTextField();
-        txtGender = new javax.swing.JTextField();
-        btnActualizar = new javax.swing.JButton();
         btnCrear = new javax.swing.JButton();
+        lblFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -60,48 +56,6 @@ public class RegistroJugadorZombie extends javax.swing.JFrame {
 
         jLabel3.setText("Cantidad:");
 
-        jLabel4.setText("Edad:");
-
-        jLabel5.setText("Genero:");
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(71, 71, 71)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtGender))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addGap(32, 32, 32)
-                        .addComponent(txtAge, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(90, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel4)
-                    .addComponent(txtAge, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(txtGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(25, Short.MAX_VALUE))
-        );
-
-        btnActualizar.setText("Actualizar");
-        btnActualizar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnActualizarActionPerformed(evt);
-            }
-        });
-
         btnCrear.setText("Crear");
         btnCrear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -109,41 +63,43 @@ public class RegistroJugadorZombie extends javax.swing.JFrame {
             }
         });
 
+        lblFondo.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnCrear)
-                    .addComponent(btnActualizar))
-                .addGap(35, 35, 35))
             .addGroup(layout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addComponent(lblFondo, javax.swing.GroupLayout.PREFERRED_SIZE, 520, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(28, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(63, 63, 63)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(54, 54, 54)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(117, 117, 117)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(131, 131, 131))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel2))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtQuantity)
-                            .addComponent(txtNickName, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(65, Short.MAX_VALUE))
+                            .addComponent(btnCrear)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel2))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtNickName)
+                                    .addComponent(txtQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(177, 177, 177))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(42, 42, 42)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblFondo, javax.swing.GroupLayout.DEFAULT_SIZE, 77, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel1)
-                .addGap(53, 53, 53)
+                .addGap(37, 37, 37)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(txtNickName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -151,52 +107,48 @@ public class RegistroJugadorZombie extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(txtQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnCrear)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnActualizar)
-                .addContainerGap(47, Short.MAX_VALUE))
+                .addGap(63, 63, 63))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearActionPerformed
-        jugadorZombie=new Clases.ZombieGamer(txtNickName.getText(),Integer.valueOf(txtQuantity.getText()));
-        System.out.println("JUGADOR: "+jugadorZombie.getName()+"\n CANTIDAD DE ZOMBIES: "+jugadorZombie.getQuantity());
-
-        
-        /**
-         * Mostramos Panel de Dialogo para informar creacion de Jugador.
-         * Seguidamente preguntamos si se quiere ingresar mas datos del jugador
-         */
-        
-        int seleccion=JOptionPane.showConfirmDialog(null,"Jugador registrado Exitosamente! Desea agregar mas informacion acerca del jugador?","Actualizar Datos",JOptionPane.YES_NO_OPTION);
-        if (seleccion==0) {
-            this.jPanel1.setVisible(true);
-            this.btnCrear.setVisible(false);
-            this.btnActualizar.setVisible(true);
-        } else {
-            dispose();
-        }
+            /**
+             * Al momento de hacer click en crear jugador, preguntamos si se desea agregar mas
+             * campos al jugador, como edad, genero, fercha de nacimiento, etc...
+             */
+            int seleccion=JOptionPane.showConfirmDialog(null, "Desea agregarle mas datos del jugador Zombie? ", "Completar Registro", JOptionPane.YES_NO_OPTION);
             
-        
-        
+            if (seleccion==0) {//Si se selecciono que SI
+                    Forms.InformacionExtraJZombies ventana=new Forms.InformacionExtraJZombies();
+                    ventana.nombreJugador=this.txtNickName.getText();
+                    ventana.cantidadZombies=Integer.valueOf(this.txtQuantity.getText());
+                    ventana.show();
+                    dispose();
+                    
+                    
+            }else{
+                jugadorZombie=new Clases.Gamer('Z',txtNickName.getText(),Integer.valueOf(txtQuantity.getText()), null); 
+                //System.out.println("Jugador creado");
+                //System.out.println("Tipo: "+jugadorZombie.getTipo()+" NickNombre: "+jugadorZombie.getName()+" Cantidad de Plantas: "+jugadorZombie.getQuantity());
+                
+                Listas.Nodo nodoJugador= new Listas.Nodo(jugadorZombie);
+                //System.out.println("Convertido en nodo listo para ir la lista");                
+                Forms.MainForm.listaJugadoresMAIN.add(nodoJugador);                
+               // System.out.println("Agregado a la lista de Tamano: "+Forms.MainForm.listaJugadoresMAIN.getLengthList());
+
+                
+                
+                dispose();        
+                              
+                
+            }
         
 // TODO add your handling code here:
     }//GEN-LAST:event_btnCrearActionPerformed
-
-    private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
-            jugadorZombie.setAge(Integer.valueOf(txtAge.getText()));
-            jugadorZombie.setGender(txtGender.getText());
-            JOptionPane.showMessageDialog(null, "Jugador Registrado Completamente.");
-            System.out.println("Edad: "+jugadorZombie.getAge()+"\n Genero: "+jugadorZombie.getGender());
-            dispose();
-            
-// TODO add your handling code here:
-    }//GEN-LAST:event_btnActualizarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -234,16 +186,11 @@ public class RegistroJugadorZombie extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnCrear;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField txtAge;
-    private javax.swing.JTextField txtGender;
+    private javax.swing.JLabel lblFondo;
     private javax.swing.JTextField txtNickName;
     private javax.swing.JTextField txtQuantity;
     // End of variables declaration//GEN-END:variables
