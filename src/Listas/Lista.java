@@ -19,20 +19,14 @@ public class Lista {
     private Nodo firstNodo;
     private Nodo lastNodo;
     private Nodo currentNodo;
-    private int length;
+    private int length=0;
     
     public Lista() {
     this.firstNodo=null;
     this.lastNodo=null;
     this.currentNodo=null;
-    this.length=0;
     }
 
-    public int getLengthList(){
-        return this.length;
-    }
-    
-    
     public void add(Nodo objetoParaColocarEnLaLista){
         Nodo nodoAdicionar=new Nodo(objetoParaColocarEnLaLista);
 
@@ -47,7 +41,8 @@ public class Lista {
             this.lastNodo=nodoAdicionar;
             this.currentNodo=this.lastNodo;
         }
-        length++;
+        
+        length=length + 1;
     }
     
     public void recorrerListaJugadores(){
@@ -89,9 +84,8 @@ public class Lista {
                         }       
  
     }
-    
-    
-        public void recorrerListaCatalogoZombies(){
+     
+    public void recorrerListaCatalogoZombies(){
         
         Listas.Nodo auxPrimero;
         auxPrimero=firstNodo;
@@ -111,9 +105,10 @@ public class Lista {
  
     }
     
-    
-    
-    
+    public int getLengthList(){
+        return this.length;
+    }
+                
     public Nodo getFirstNodo() {
         return firstNodo;
     }
@@ -129,8 +124,6 @@ public class Lista {
     public void setLastNodo(Nodo lastNodo) {
         this.lastNodo = lastNodo;
     }
-    
-    
     
     public void graficarJugadores(){        
         /**
@@ -198,7 +191,7 @@ public class Lista {
          * SEGUNDA PARTE DEL METODO
          * CREACION DEL ARCHIVO DE TEXTO
          */
-                        try {
+            try {
                         File outFile = new File("/home/androide17/Escritorio/Jugadores.txt");
             try (BufferedWriter writer = new BufferedWriter(new FileWriter(outFile))) {
                 writer.write(todoElTXT);
@@ -206,12 +199,131 @@ public class Lista {
                         } catch (IOException e) {
                         System.err.println(e);
                         System.exit(1);
-                        }
-            
-
-       
- 
+            }
     }
+    
+    public void graficarColaPlantas(){        
+        /**
+         * PRIMERA PARTE DEL METODO
+         * CREACION DEL STRING CODIGO FUENTE PARA EL ARCHIVO .TXT 
+         */
+        String codigo="";
+             
+        Listas.Nodo auxPrimero;
+        auxPrimero=firstNodo;
+                        boolean primero=false;
+                        int indice=0;
+                        
+                        while( auxPrimero != null ){
+                            //PRIMER JUGADOR
+                            indice=indice+1;
+                            
+                            Listas.Nodo nodoAux;
+                            nodoAux=(Listas.Nodo)auxPrimero.getObjetoGuardado();
+                            Clases.Plant plantt;
+                            plantt=(Clases.Plant)nodoAux.getObjetoGuardado();
+                            
+                            if(primero==true){
+                            codigo=codigo+" -> "+plantt.getNamePlant()+indice;
+                            }
+                            if (primero==false) {
+                               codigo=codigo+plantt.getNamePlant()+indice+" ->  PrimeroDeSalida ; \n";
+                               codigo=codigo + plantt.getNamePlant()+indice;
+                               primero=true;
+                            }
+
+                                
+                            
+                            auxPrimero = auxPrimero.getSiguenteNodo();  
+                            
+                            if (auxPrimero==null) {
+                                codigo=codigo+"; \n";
+                            }
+                        
+                        }
+        
+                        
+                        
+        String todoElTXT="digraph G \n { \n "+ codigo +" \n }";
+                        
+        
+                                /**
+                                 * SEGUNDA PARTE DEL METODO
+                                 * CREACION DEL ARCHIVO DE TEXTO
+                                 */
+                                    try {
+                                                File outFile = new File("/home/androide17/Escritorio/ColaPlantas.txt");
+                                    try (BufferedWriter writer = new BufferedWriter(new FileWriter(outFile))) {
+                                        writer.write(todoElTXT);
+                                    }
+                                                } catch (IOException e) {
+                                                System.err.println(e);
+                                                System.exit(1);
+                                    }
+    }
+    
+        
+     public void graficarPilaZombies(){        
+        /**
+         * PRIMERA PARTE DEL METODO
+         * CREACION DEL STRING CODIGO FUENTE PARA EL ARCHIVO .TXT 
+         */
+         
+        String codigo="";
+             
+        Listas.Nodo auxPrimero;
+        auxPrimero=firstNodo;
+        
+                        boolean primero=false;
+                        int indice=0;
+                        
+                        while( auxPrimero != null ){
+                            //PRIMER JUGADOR
+                            indice=indice+1;
+                            
+                            Listas.Nodo nodoAux;
+                            nodoAux=(Listas.Nodo)auxPrimero.getObjetoGuardado();
+                            Clases.Zombie zmbie;
+                            zmbie=(Clases.Zombie)nodoAux.getObjetoGuardado();
+                            
+                            if(primero==true){
+                            codigo=codigo+" -> "+zmbie.getNameZombie()+indice;
+                            }
+                            if (primero==false) {
+                               codigo=codigo + zmbie.getNameZombie()+indice;
+                               primero=true;
+                            }
+
+                            auxPrimero = auxPrimero.getSiguenteNodo();  
+                            
+                            if (auxPrimero==null) {
+                                codigo=codigo+"; \n";
+                                codigo=codigo+zmbie.getNameZombie()+indice+" -> UltimoDeSalida";
+                            }                            
+                        
+                        }
+        
+                        
+                        
+        String todoElTXT="digraph G \n { \n "+ codigo +" \n }";
+                        
+        
+                                /**
+                                 * SEGUNDA PARTE DEL METODO
+                                 * CREACION DEL ARCHIVO DE TEXTO
+                                 */
+                                    try {
+                                                File outFile = new File("/home/androide17/Escritorio/PilaZombies.txt");
+                                    try (BufferedWriter writer = new BufferedWriter(new FileWriter(outFile))) {
+                                        writer.write(todoElTXT);
+                                    }
+                                                } catch (IOException e) {
+                                                System.err.println(e);
+                                                System.exit(1);
+                                    }
+    }
+    
+    
     
     public String cadenaPlantas(){        
         /**
@@ -303,4 +415,97 @@ public class Lista {
         return codigo;
     }
     
+    public void sacarPrimero(){
+        
+        firstNodo=firstNodo.getSiguenteNodo();
+        length=length - 1;
+        
+    }
+    
+    public void sacarUltimo(){
+         
+                        length=length - 1;
+                        
+                        /**
+                         * SI LASTNODO.ANTERIOR IS NULL
+                         *          
+                         */
+                        if (lastNodo.getAnteriorNodo()==null) {
+                            firstNodo=null;
+                        }else{
+                            lastNodo=lastNodo.getAnteriorNodo();
+                            lastNodo.setSiguenteNodo(null);
+                            currentNodo=lastNodo;             
+                        }
+
+    }
+    
+    
+    public void recorrerColaPlantas(){
+        System.out.println("Tama;o de la Cola: "+this.length);
+        
+        Listas.Nodo auxPrimero;
+        auxPrimero=firstNodo;
+                        
+                        while( auxPrimero != null ){        
+
+                            Listas.Nodo nodoPlantaAux;
+                            nodoPlantaAux=(Listas.Nodo)auxPrimero.getObjetoGuardado();
+                            String planta;
+                            planta=(String)nodoPlantaAux.getObjetoGuardado();
+                            
+                            //System.out.println("PLANTA_IMG: "+planta.getPicturePlant()+" NAME: "+ planta.getNamePlant()+ " ATAQUE: " + planta.getPointsOfAtack()+" DEFENZA: "+planta.getPointsOfDefense()+" MODE: "+planta.getMode());
+                            System.out.println(planta);
+                            
+                            auxPrimero = auxPrimero.getSiguenteNodo();                            
+
+                        }  
+    }
+    
+    
+    
+    public Clases.Plant plantaAlAzar(){
+        Clases.Plant random=null;
+        
+        Listas.Nodo auxPrimero;
+        auxPrimero=firstNodo;
+        
+        int indiceCola=0;
+        int x=(int) (Math.random()*this.length)+1 ;
+            while( auxPrimero != null ){        
+                indiceCola=indiceCola + 1;
+
+                    if(x==indiceCola){
+                        Listas.Nodo nodoPlantaAux=(Listas.Nodo)auxPrimero.getObjetoGuardado();
+                       random=(Clases.Plant)nodoPlantaAux.getObjetoGuardado();
+                       //System.out.println("PLANTA_IMG: "+random.getPicturePlant()+" NAME: "+ random.getNamePlant()+ " ATAQUE: " + random.getPointsOfAtack()+" DEFENZA: "+random.getPointsOfDefense()+" MODE: "+random.getMode());
+                   }    
+  
+                    auxPrimero = auxPrimero.getSiguenteNodo();                            
+            } 
+        return random;
+    }
+    
+    public Clases.Zombie zombieAlAzar(){
+        Clases.Zombie random=null;
+        
+        Listas.Nodo auxPrimero;
+        auxPrimero=firstNodo;
+        
+        int indiceCola=0;
+        int x=(int) (Math.random()*this.length)+1 ;
+            while( auxPrimero != null ){        
+                indiceCola=indiceCola + 1;
+
+                    if(x==indiceCola){
+                        Listas.Nodo nodoPlantaAux=(Listas.Nodo)auxPrimero.getObjetoGuardado();
+                       random=(Clases.Zombie)nodoPlantaAux.getObjetoGuardado();
+                       //System.out.println("PLANTA_IMG: "+random.getPictureZombie()+" NAME: "+ random.getNameZombie()+ " ATAQUE: " + random.getPointsOfAtack()+" DEFENZA: "+random.getPointsOfDefense()+" MODE: "+random.getMode());
+                   }    
+  
+                    auxPrimero = auxPrimero.getSiguenteNodo();                            
+            } 
+        return random;
+    }
+        
     }

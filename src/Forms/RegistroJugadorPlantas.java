@@ -145,6 +145,7 @@ public class RegistroJugadorPlantas extends javax.swing.JFrame {
                 
                 dispose();           
             }
+            FRAMEJUEGO.cantidadPlantas=Integer.valueOf(txtQuantity.getText());
                 
     }//GEN-LAST:event_btnCrearActionPerformed
 

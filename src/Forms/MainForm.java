@@ -6,6 +6,7 @@
 
 package Forms;
 
+import Listas.Lista;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 
@@ -19,6 +20,8 @@ public class MainForm extends javax.swing.JFrame {
     public static  Listas.Lista listaCatalogoPlntasMAIN=new Listas.Lista();
     public static  Listas.Lista listaCatalogoZombiesMAIN=new Listas.Lista();
     
+    public static Listas.Lista colaPlantas=new Listas.Lista();
+    public static Listas.Lista pilaZombies=new Listas.Lista();
     
     Forms.RegistroJugadorPlantas ventanaP;
     Forms.RegistroJugadorZombie  ventanaZ;

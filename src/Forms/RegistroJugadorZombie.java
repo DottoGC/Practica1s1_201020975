@@ -146,6 +146,7 @@ public class RegistroJugadorZombie extends javax.swing.JFrame {
                               
                 
             }
+                        FRAMEJUEGO.cantidadZombies=Integer.valueOf(txtQuantity.getText());
         
 // TODO add your handling code here:
     }//GEN-LAST:event_btnCrearActionPerformed
