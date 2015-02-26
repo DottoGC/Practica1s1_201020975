@@ -26,6 +26,19 @@ public class Lista {
     this.lastNodo=null;
     this.currentNodo=null;
     }
+    
+    
+    
+    
+    public void limpiarLista(){
+    this.firstNodo=null;
+    this.lastNodo=null;
+    this.currentNodo=null;
+    this.length=0;
+    }
+    
+    
+    
 
     public void add(Nodo objetoParaColocarEnLaLista){
         Nodo nodoAdicionar=new Nodo(objetoParaColocarEnLaLista);
@@ -454,7 +467,7 @@ public class Lista {
                             String planta;
                             planta=(String)nodoPlantaAux.getObjetoGuardado();
                             
-                            //System.out.println("PLANTA_IMG: "+planta.getPicturePlant()+" NAME: "+ planta.getNamePlant()+ " ATAQUE: " + planta.getPointsOfAtack()+" DEFENZA: "+planta.getPointsOfDefense()+" MODE: "+planta.getMode());
+                            //System.out.println("PLANTA_IMG: "+zombie.getPicturePlant()+" NAME: "+ zombie.getNamePlant()+ " ATAQUE: " + zombie.getPointsOfAtack()+" DEFENZA: "+zombie.getPointsOfDefense()+" MODE: "+zombie.getMode());
                             System.out.println(planta);
                             
                             auxPrimero = auxPrimero.getSiguenteNodo();                            
@@ -478,7 +491,7 @@ public class Lista {
                     if(x==indiceCola){
                         Listas.Nodo nodoPlantaAux=(Listas.Nodo)auxPrimero.getObjetoGuardado();
                        random=(Clases.Plant)nodoPlantaAux.getObjetoGuardado();
-                       //System.out.println("PLANTA_IMG: "+random.getPicturePlant()+" NAME: "+ random.getNamePlant()+ " ATAQUE: " + random.getPointsOfAtack()+" DEFENZA: "+random.getPointsOfDefense()+" MODE: "+random.getMode());
+                       //System.out.println("PLANTA_IMG: "+zombie.getPicturePlant()+" NAME: "+ zombie.getNamePlant()+ " ATAQUE: " + zombie.getPointsOfAtack()+" DEFENZA: "+zombie.getPointsOfDefense()+" MODE: "+zombie.getMode());
                    }    
   
                     auxPrimero = auxPrimero.getSiguenteNodo();                            
@@ -500,12 +513,59 @@ public class Lista {
                     if(x==indiceCola){
                         Listas.Nodo nodoPlantaAux=(Listas.Nodo)auxPrimero.getObjetoGuardado();
                        random=(Clases.Zombie)nodoPlantaAux.getObjetoGuardado();
-                       //System.out.println("PLANTA_IMG: "+random.getPictureZombie()+" NAME: "+ random.getNameZombie()+ " ATAQUE: " + random.getPointsOfAtack()+" DEFENZA: "+random.getPointsOfDefense()+" MODE: "+random.getMode());
+                       //System.out.println("PLANTA_IMG: "+zombie.getPictureZombie()+" NAME: "+ zombie.getNameZombie()+ " ATAQUE: " + zombie.getPointsOfAtack()+" DEFENZA: "+zombie.getPointsOfDefense()+" MODE: "+zombie.getMode());
                    }    
   
                     auxPrimero = auxPrimero.getSiguenteNodo();                            
             } 
         return random;
     }
+    
+    
+    public Clases.Plant obtenerPlantaDelIndice(int indice){
+    
+        Clases.Plant planta=null;
+        
+        Listas.Nodo nodoAux;
+        nodoAux=firstNodo;
+        
+        int indiceCola=0;
+            while( nodoAux != null ){        
+                
+                    if(indice==indiceCola){
+                        Listas.Nodo nodoPlantaAux=(Listas.Nodo)nodoAux.getObjetoGuardado();
+                       planta=(Clases.Plant)nodoPlantaAux.getObjetoGuardado();
+                       //System.out.println("PLANTA_IMG: "+zombie.getPicturePlant()+" NAME: "+ zombie.getNamePlant()+ " ATAQUE: " + zombie.getPointsOfAtack()+" DEFENZA: "+zombie.getPointsOfDefense()+" MODE: "+zombie.getMode());
+                   }    
+                    
+                    indiceCola=indiceCola + 1;
+                    nodoAux = nodoAux.getSiguenteNodo();                            
+            } 
+        return planta;
+        
+    }
+    
+        public Clases.Zombie obtenerZombieDelIndice(int indice){
+    
+        Clases.Zombie zombie=null;
+        
+        Listas.Nodo nodoAux;
+        nodoAux=firstNodo;
+        
+        int indiceCola=0;
+            while( nodoAux != null ){       
+                
+                    if(indice==indiceCola){
+                        Listas.Nodo nodoZombieAux=(Listas.Nodo)nodoAux.getObjetoGuardado();
+                       zombie=(Clases.Zombie)nodoZombieAux.getObjetoGuardado();
+                       //System.out.println("PLANTA_IMG: "+zombie.getPicturePlant()+" NAME: "+ zombie.getNamePlant()+ " ATAQUE: " + zombie.getPointsOfAtack()+" DEFENZA: "+zombie.getPointsOfDefense()+" MODE: "+zombie.getMode());
+                   }    
+                    
+                    indiceCola=indiceCola + 1;
+                    nodoAux = nodoAux.getSiguenteNodo();                            
+            } 
+        return zombie; 
+        }
+    
         
     }

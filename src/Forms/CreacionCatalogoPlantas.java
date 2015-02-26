@@ -10,12 +10,14 @@ import java.awt.Image;
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
 
 /**
  *
  * @author androide17
  */
 public class CreacionCatalogoPlantas extends javax.swing.JFrame {
+    
    public static DefaultListModel modeloLista=new DefaultListModel();//LO UTILIZAMOS PARA SETEAR EL MODELO QUE USA EL JLIST DEL FORMULARIO
     /**
      * Creates new form CreacionCatalogoPlantas
@@ -46,6 +48,8 @@ public class CreacionCatalogoPlantas extends javax.swing.JFrame {
         btnCrear = new javax.swing.JButton();
         btnGuardarCatalogo = new javax.swing.JButton();
         lblFondo = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -70,10 +74,28 @@ public class CreacionCatalogoPlantas extends javax.swing.JFrame {
 
         lblFondo.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
+        jButton1.setText("Editar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jButton2.setText("Eliminar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(227, 227, 227))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -83,15 +105,16 @@ public class CreacionCatalogoPlantas extends javax.swing.JFrame {
                         .addGap(76, 76, 76)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 512, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(213, 213, 213)
+                        .addGap(141, 141, 141)
                         .addComponent(btnCrear)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnGuardarCatalogo)))
-                .addContainerGap(28, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(227, 227, 227))
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton2))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(239, 239, 239)
+                        .addComponent(btnGuardarCatalogo, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -101,12 +124,15 @@ public class CreacionCatalogoPlantas extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCrear)
-                    .addComponent(btnGuardarCatalogo))
-                .addGap(70, 70, 70))
+                    .addComponent(jButton1)
+                    .addComponent(jButton2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnGuardarCatalogo, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(21, 21, 21))
         );
 
         pack();
@@ -130,6 +156,48 @@ public class CreacionCatalogoPlantas extends javax.swing.JFrame {
 
 // TODO add your handling code here:
     }//GEN-LAST:event_btnGuardarCatalogoActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+
+        if(jListTipoDePlantas.isSelectionEmpty()){
+            
+            //System.out.print("Index seleccionado: "+item);
+            //System.out.print("Index seleccionado: "+item);
+            
+            JOptionPane.showMessageDialog(null, "No hay ninguna planta en la lista para Editar. Oh Asegurese de seleccionar uno de la lista!!");
+        
+        }else{          
+            /**
+             NECESITARE MANDARLE EL ITEM SELECCIONADO DE NUESTRO JLISTO CONTENEDOR DE LA INFORMACION DE NUESTRO CATALOGO
+             */
+            int item;
+            item=jListTipoDePlantas.getSelectedIndex();
+            
+            //System.out.println("ITEM ES: "+item);
+            
+            Forms.EditarCatalogoPlantas.indice=item;
+            
+            EditarCatalogoPlantas v=new EditarCatalogoPlantas();           
+            v.show();
+            
+            
+            
+        }
+                
+
+// TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+       
+        if(MainForm.listaCatalogoPlntasMAIN.getLengthList()==0){
+            JOptionPane.showMessageDialog(null, "No hay ninguna planta en la lista para Eliminar. Oh Asegurese de haber seleccionado uno de la lista.");
+        
+        }else{
+
+        }
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
  
     
     
@@ -177,6 +245,8 @@ public class CreacionCatalogoPlantas extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCrear;
     private javax.swing.JButton btnGuardarCatalogo;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     public static javax.swing.JList jListTipoDePlantas;
     private javax.swing.JScrollPane jScrollPane1;

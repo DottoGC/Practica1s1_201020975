@@ -62,7 +62,7 @@ public File archivo;
         btnGuardarPlanta = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel1.setText("Ingreso de Datos para el Catalogo");
@@ -221,8 +221,8 @@ int open = selector.showDialog(null, "Abrir");
             
         if(PATH.endsWith(".jpg")||PATH.endsWith(".png")){
 
-        System.out.println("Path: "+PATH);
-        System.out.println("Name: "+selector.getSelectedFile().getName());
+       // System.out.println("Path: "+PATH);
+        //System.out.println("Name: "+selector.getSelectedFile().getName());
         
             }else{
                 JOptionPane.showMessageDialog(this, "No se reconoce el archivo","ERROR de extencion del archivo", JOptionPane.ERROR_MESSAGE);

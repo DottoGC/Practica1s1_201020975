@@ -59,7 +59,7 @@ public File archivo;
         cmbMode = new javax.swing.JComboBox();
         btnAgregarZombie = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel1.setText("Ingreso de Datos para el Catalogo");
@@ -214,7 +214,7 @@ public File archivo;
         this.txtNombre.setText(nombreFile);
         btnCargarImagen.setVisible(false);
         
-                            System.out.println("Path archivo: ver "+archivo.getAbsolutePath().toString());
+                            //System.out.println("Path archivo: ver "+archivo.getAbsolutePath().toString());
                 ImageIcon tmpIconAux = new ImageIcon(getClass().getResource("/Others/"+nombreFile));
                 ImageIcon tmpIcon = new ImageIcon(tmpIconAux.getImage().getScaledInstance(lblImagen.getWidth(), lblImagen.getHeight(), Image.SCALE_DEFAULT));
                 lblImagen.setIcon(tmpIcon);
@@ -241,8 +241,8 @@ int open = selector.showDialog(null, "Abrir");
             
         if(PATH.endsWith(".jpg")||PATH.endsWith(".png")){
 
-        System.out.println("Path: "+PATH);
-        System.out.println("Name: "+selector.getSelectedFile().getName());
+        //System.out.println("Path: "+PATH);
+        //System.out.println("Name: "+selector.getSelectedFile().getName());
         
             }else{
                 JOptionPane.showMessageDialog(this, "No se reconoce el archivo","ERROR de extencion del archivo", JOptionPane.ERROR_MESSAGE);

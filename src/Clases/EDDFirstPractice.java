@@ -23,11 +23,8 @@ public class EDDFirstPractice {
     Forms.MainForm vPrincipal=new Forms.MainForm();
     vPrincipal.show();
     
-    //Forms.FRAMEJUEGO v=new Forms.FRAMEJUEGO();
-    //v.show();
+  
     
-    //Forms.NewJFrame v=new Forms.NewJFrame();
-    //v.show();
     
     }
     

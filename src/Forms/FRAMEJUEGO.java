@@ -32,18 +32,23 @@ public class FRAMEJUEGO extends javax.swing.JFrame{
     public static int cantidadPlantas;
     public static int cantidadZombies;
     
+    public static int filasMatriz;
+    public static int columnasMatriz;
+   
     Timer timerZ;
     Timer timer;
     File file;
     
     JButton[] buttonsPlants;
     JButton[] buttonsZombies;
+    JButton[][] buttonsMatriz;
     
     /**
      * Creates new form FRAMEJUEGO
      */
     public FRAMEJUEGO() {
         initComponents();
+        
         generarColaDefault();
         generarPilaDefault();
         
@@ -53,7 +58,51 @@ public class FRAMEJUEGO extends javax.swing.JFrame{
         timerColaPlantas();
         timerPilaZombies();
         
+        llenarPanelMatriz();
+        
+
+        
     }
+    
+    public void llenarPanelMatriz(){
+        
+    this.jPanelMatriz.removeAll();
+
+          SwingUtilities.updateComponentTreeUI(this);
+          
+            
+    buttonsMatriz = new JButton[filasMatriz][columnasMatriz];
+    
+      for(int column=0; column<columnasMatriz; column++){
+            for(int fila=0; fila<filasMatriz; fila++){
+
+                buttonsMatriz[fila][column]= new JButton("("+ (fila+1) +","+(column+1) +")");
+                buttonsMatriz[fila][column].setBounds(column*100,100*fila,100,100);
+
+                //ImageIcon tmpIconAux = new ImageIcon(getClass().getResource(MainForm.colaPlantas.obtenerPlantaDelIndice(column).getPicturePlant()));
+                //ImageIcon tmpIcon = new ImageIcon(tmpIconAux.getImage().getScaledInstance(buttonsPlants[column].getWidth(), buttonsPlants[column].getHeight(), Image.SCALE_DEFAULT));
+
+                //buttonsPlants[column][fila].setIcon(tmpIcon);
+                //buttonsMatriz[column][fila].setBorder(BorderFactory.createLineBorder(Color.black));
+
+                this.jPanelMatriz.add(buttonsMatriz[fila][column]);
+                buttonsMatriz[fila][column].addActionListener(                new java.awt.event.ActionListener ( ) {
+                                    public void actionPerformed(java.awt.event.ActionEvent evt ) {
+
+                                    System.out.println("Se boton denstro de la matriz");
+
+                                    }});
+
+                
+            }
+      }
+
+
+      
+       this.repaint(); 
+    
+    }
+    
 
     public void llenarPanelPlantas(){
         this.jPanelColaPlantas.removeAll();
@@ -64,7 +113,7 @@ public class FRAMEJUEGO extends javax.swing.JFrame{
             buttonsPlants[i]= new JButton("Button"+(i+1));
             buttonsPlants[i].setBounds(10,75*i,75,75);
             
-            ImageIcon tmpIconAux = new ImageIcon(getClass().getResource(MainForm.colaPlantas.plantaAlAzar().getPicturePlant()));
+            ImageIcon tmpIconAux = new ImageIcon(getClass().getResource(MainForm.colaPlantas.obtenerPlantaDelIndice(i).getPicturePlant()));
             ImageIcon tmpIcon = new ImageIcon(tmpIconAux.getImage().getScaledInstance(buttonsPlants[i].getWidth(), buttonsPlants[i].getHeight(), Image.SCALE_DEFAULT));
             
             buttonsPlants[i].setIcon(tmpIcon);
@@ -83,7 +132,7 @@ public class FRAMEJUEGO extends javax.swing.JFrame{
         buttonsPlants[0].addActionListener( new java.awt.event.ActionListener ( ) {
                                     public void actionPerformed(java.awt.event.ActionEvent evt ) {
 
-                                    System.out.println("Se preciono boton plantas");
+                                    //System.out.println("Se preciono boton plantas");
                                     MainForm.colaPlantas.sacarPrimero();
                                     llenarPanelPlantas();
                                     }});   
@@ -98,7 +147,7 @@ public class FRAMEJUEGO extends javax.swing.JFrame{
             buttonsZombies[i]= new JButton("Button"+(i+1));
             buttonsZombies[i].setBounds(10,75*i,75,75);
             
-            ImageIcon tmpIconAux = new ImageIcon(getClass().getResource(MainForm.pilaZombies.zombieAlAzar().getPictureZombie()));
+            ImageIcon tmpIconAux = new ImageIcon(getClass().getResource(MainForm.pilaZombies.obtenerZombieDelIndice(i).getPictureZombie()));
             ImageIcon tmpIcon = new ImageIcon(tmpIconAux.getImage().getScaledInstance(buttonsZombies[i].getWidth(), buttonsZombies[i].getHeight(), Image.SCALE_DEFAULT));
             
             buttonsZombies[i].setIcon(tmpIcon);
@@ -116,7 +165,7 @@ public class FRAMEJUEGO extends javax.swing.JFrame{
         buttonsZombies[MainForm.pilaZombies.getLengthList()-1].addActionListener( new java.awt.event.ActionListener ( ) {
                                     public void actionPerformed(java.awt.event.ActionEvent evt ) {
 
-                                    System.out.println("Se preciono boton zombies");
+                                    //System.out.println("Se preciono boton zombies");
                                     MainForm.pilaZombies.sacarUltimo();
                                     llenarPanelZombies();
                                     }});
@@ -136,8 +185,8 @@ public class FRAMEJUEGO extends javax.swing.JFrame{
         jPanelColaPlantas = new javax.swing.JPanel();
         jPanelPilaZombies = new javax.swing.JPanel();
         lblCantidadPlantas = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
         lblCantidadZombies = new javax.swing.JLabel();
+        jPanelMatriz = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -177,10 +226,18 @@ public class FRAMEJUEGO extends javax.swing.JFrame{
 
         lblCantidadPlantas.setText("No: ");
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Others/Index.jpg"))); // NOI18N
-        jLabel1.setText("jLabel1");
-
         lblCantidadZombies.setText("No: ");
+
+        javax.swing.GroupLayout jPanelMatrizLayout = new javax.swing.GroupLayout(jPanelMatriz);
+        jPanelMatriz.setLayout(jPanelMatrizLayout);
+        jPanelMatrizLayout.setHorizontalGroup(
+            jPanelMatrizLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 619, Short.MAX_VALUE)
+        );
+        jPanelMatrizLayout.setVerticalGroup(
+            jPanelMatrizLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
 
         jMenu1.setText("Jugar");
         jMenuBar1.add(jMenu1);
@@ -230,17 +287,15 @@ public class FRAMEJUEGO extends javax.swing.JFrame{
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblCantidadPlantas)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblCantidadPlantas)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jPanelColaPlantas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(4, 4, 4)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 631, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblCantidadZombies)
-                            .addComponent(jPanelPilaZombies, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(18, 18, 18)
+                        .addComponent(jPanelMatriz, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblCantidadZombies)
+                    .addComponent(jPanelPilaZombies, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -251,13 +306,11 @@ public class FRAMEJUEGO extends javax.swing.JFrame{
                 .addGap(5, 5, 5)
                 .addComponent(lblCantidadZombies)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jPanelColaPlantas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jPanelPilaZombies, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(27, 27, 27))))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanelColaPlantas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanelPilaZombies, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanelMatriz, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 14, Short.MAX_VALUE))
         );
 
         pack();
@@ -647,7 +700,6 @@ e.printStackTrace();
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
@@ -656,6 +708,7 @@ e.printStackTrace();
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     public javax.swing.JPanel jPanelColaPlantas;
+    private javax.swing.JPanel jPanelMatriz;
     private javax.swing.JPanel jPanelPilaZombies;
     private javax.swing.JLabel lblCantidadPlantas;
     private javax.swing.JLabel lblCantidadZombies;
